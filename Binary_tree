@@ -1,0 +1,213 @@
+using System;
+
+public class Node
+{
+    public int Value { get; set; }
+    public Node Left { get; set; }
+    public Node Right { get; set; }
+
+    public Node(int value)
+    {
+        Value = value;
+        Left = null;
+        Right = null;
+    }
+}
+
+public class BinaryTree
+{
+    public Node Root { get; set; }
+
+    public BinaryTree()
+    {
+        Root = null;
+    }
+
+    public void Insert(int value)
+    {
+        Root = InsertRec(Root, value);
+    }
+
+    private Node InsertRec(Node root, int value)
+    {
+        if (root == null)
+        {
+            root = new Node(value);
+            return root;
+        }
+
+        if (value < root.Value)
+        {
+            root.Left = InsertRec(root.Left, value);
+        }
+        else if (value > root.Value)
+        {
+            root.Right = InsertRec(root.Right, value);
+        }
+
+        return root;
+    }
+
+    public void InOrderTraversal(Node node)
+    {
+        if (node != null)
+        {
+            InOrderTraversal(node.Left);
+            Console.Write(node.Value + " ");
+            InOrderTraversal(node.Right);
+        }
+    }
+
+    public void PreOrderTraversal(Node node)
+    {
+        if (node != null)
+        {
+            Console.Write(node.Value + " ");
+            PreOrderTraversal(node.Left);
+            PreOrderTraversal(node.Right);
+        }
+    }
+
+    public void PostOrderTraversal(Node node)
+    {
+        if (node != null)
+        {
+            PostOrderTraversal(node.Left);
+            PostOrderTraversal(node.Right);
+            Console.Write(node.Value + " ");
+        }
+    }
+}
+
+class CUSTOM
+{
+    static void Main(string[] args)
+    {
+        BinaryTree tree = new BinaryTree();
+
+        // Insert nodes into the binary tree
+        tree.Insert(50);
+        tree.Insert(30);
+        tree.Insert(20);
+        tree.Insert(40);
+        tree.Insert(70);
+        tree.Insert(60);
+        tree.Insert(80);
+
+        // In-order traversal
+        Console.WriteLine("In-order traversal:");
+        tree.InOrderTraversal(tree.Root);
+
+        // Pre-order traversal
+        Console.WriteLine("\nPre-order traversal:");
+        tree.PreOrderTraversal(tree.Root);
+
+        // Post-order traversal
+        Console.WriteLine("\nPost-order traversal:");
+        tree.PostOrderTraversal(tree.Root);
+    }
+}using System;
+ 
+ public class Node
+ {
+     public int Value { get; set; }
+     public Node Left { get; set; }
+     public Node Right { get; set; }
+ 
+     public Node(int value)
+     {
+         Value = value;
+         Left = null;
+         Right = null;
+     }
+ }
+ 
+ public class BinaryTree
+ {
+     public Node Root { get; set; }
+ 
+     public BinaryTree()
+     {
+         Root = null;
+     }
+ 
+     public void Insert(int value)
+     {
+         Root = InsertRec(Root, value);
+     }
+ 
+     private Node InsertRec(Node root, int value)
+     {
+         if (root == null)
+         {
+             root = new Node(value);
+             return root;
+         }
+ 
+         if (value < root.Value)
+         {
+             root.Left = InsertRec(root.Left, value);
+         }
+         else if (value > root.Value)
+         {
+             root.Right = InsertRec(root.Right, value);
+         }
+ 
+         return root;
+     }
+ 
+     public void InOrderTraversal(Node node)
+     {
+         if (node != null)
+         {
+             InOrderTraversal(node.Left);
+             Console.Write(node.Value + " ");
+             InOrderTraversal(node.Right);
+         }
+     }
+ 
+     public void PreOrderTraversal(Node node)
+     {
+         if (node != null)
+         {
+             Console.Write(node.Value + " ");
+             PreOrderTraversal(node.Left);
+             PreOrderTraversal(node.Right);
+         }
+     }
+ 
+     public void PostOrderTraversal(Node node)
+     {
+         if (node != null)
+         {
+             PostOrderTraversal(node.Left);
+             PostOrderTraversal(node.Right);
+             Console.Write(node.Value + " ");
+         }
+     }
+ }
+ 
+ class CUSTOM
+ {
+     static void Main(string[] args)
+     {
+         BinaryTree tree = new BinaryTree();
+ 
+         tree.Insert(50);
+         tree.Insert(30);
+         tree.Insert(20);
+         tree.Insert(40);
+         tree.Insert(70);
+         tree.Insert(60);
+         tree.Insert(80);
+ 
+         Console.WriteLine("In-order traversal:");
+         tree.InOrderTraversal(tree.Root);
+ 
+         Console.WriteLine("\nPre-order traversal:");
+         tree.PreOrderTraversal(tree.Root);
+ 
+         Console.WriteLine("\nPost-order traversal:");
+         tree.PostOrderTraversal(tree.Root);
+     }
+ }
